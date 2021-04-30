@@ -8,18 +8,14 @@ public class Segment : MonoBehaviour
 {
     [SerializeField] [Range(0, 100)] private float startSpeed = 8;
     [SerializeField] private int pointsLimit = 2;
-    [SerializeField] private float minDistance = 1;
-    [SerializeField] private float minStep = 0.1f;
-    [SerializeField] private List<Vector3> points = new List<Vector3>();
-    [SerializeField] private float speed;
+    private Vector3 point;
+    private float speed;
     private Vector3 startPosition;
     private Transform segmentAhead;
     private new Renderer renderer;
 
     public void Restart()
     {
-        points.Clear();
-
         speed = startSpeed;
         transform.position = startPosition;
     }
@@ -40,16 +36,11 @@ public class Segment : MonoBehaviour
         segmentAhead = segment;
     }
 
-    public void AddPoint(Vector3 point)
+    public void SetPoint(Vector3 point)
     {
         if (point.z >= transform.position.z)
         {
-            points.Add(point);
-        }
-
-        if (points.Count > pointsLimit)
-        {
-            points.RemoveAt(0);
+            this.point = point;
         }
     }
 
@@ -63,28 +54,18 @@ public class Segment : MonoBehaviour
 
     private void Update()
     {
-        if (points.Count > 0)
-        {
-            float distance = Mathf.Pow(Vector3.Distance(transform.position, points.First()), 3);
+        float distance = Mathf.Pow(Vector3.Distance(transform.position, point), 2);
 
-            if(Vector3.Distance(transform.position, segmentAhead.position) > minDistance)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, points.First(), distance * speed * Time.deltaTime);
-            }
-            else
-            {
-                transform.position = Vector3.MoveTowards(transform.position, points.First().ChangeZ(transform.position.z + minStep), distance * speed * Time.deltaTime);
-            }
+        transform.position = Vector3.MoveTowards(transform.position, point, distance * speed * Time.deltaTime);
 
-            CheckEndPoint();
-        }
+        CheckEndPoint();
     }
 
     private void CheckEndPoint()
     {
-        if (transform.position == points.First())
+        if (transform.position.z > point.z)
         {
-            points.RemoveAt(0);
+            point = segmentAhead.position;
         }
     }
 }

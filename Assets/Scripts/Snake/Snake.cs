@@ -68,13 +68,13 @@ public class Snake : MonoBehaviour, IRestartable
         }
     }
 
-    public void AddPointsToSegments()
+    public void SetPointsToSegments()
     {
-        segments.First().AddPoint(transform.position);
+        segments.First().SetPoint(transform.position);
 
         for (int i = 1; i < segments.Count; i++)
         {
-            segments[i].AddPoint(segments[i - 1].transform.position);
+            segments[i].SetPoint(segments[i - 1].transform.position);
         }
     }
 

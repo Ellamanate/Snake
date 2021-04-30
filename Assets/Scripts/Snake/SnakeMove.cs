@@ -20,7 +20,7 @@ public class SnakeMove : MonoBehaviour
     public void StartFever()
     {
         Isfever = true;
-        SpeedControl(feverSpeedUp);
+        SpeedControl(feverSpeedUp / 2);
     }
 
     public void StopFever()
@@ -45,17 +45,23 @@ public class SnakeMove : MonoBehaviour
     {
         snake = GetComponent<Snake>();
         body = GetComponent<CharacterController>();
-
-        StartCoroutine(Tracker());
     }
 
     private void Update()
     {
         if (isGame)
         {
+            snake.SetPointsToSegments();
+
             if (!Isfever) 
             {
-                float horizontalInput = Input.GetAxis("Horizontal");
+                float horizontalInput = 0;
+
+                if (Input.GetMouseButton(0))
+                {
+                    horizontalInput = Input.mousePosition.x > Screen.width / 2 ? 1 : Input.mousePosition.x < Screen.width / 2 ? -1 : 0;
+                }
+
                 force = new Vector3(horizontalInput * RatioXZ.x, 0, RatioXZ.y);
 
                 SpeedControl(force.magnitude / 2);
@@ -72,18 +78,5 @@ public class SnakeMove : MonoBehaviour
     private void SpeedControl(float speedCoef)
     {
         snake.ControlSegmentsSpeed(speedCoef);
-    }
-
-    private IEnumerator Tracker()
-    {
-        while (true)
-        {
-            if (isGame)
-            {
-                snake.AddPointsToSegments();
-            }
-
-            yield return new WaitForSeconds(trackDelay);
-        }
     }
 }
