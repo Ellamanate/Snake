@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Food : MonoBehaviour, IRestartable
 {
-    [SerializeField] private ObjectColor objectColor;
+    private ObjectColor objectColor;
     private new Renderer renderer;
     private Vector3 startPosition;
 

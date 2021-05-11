@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  feverSpeedUp: 3
   trackDelay: 0.025
   RatioXZ: {x: 2.5, y: 1}
 --- !u!114 &8297167455339119422
@@ -131,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5e0084b61c3344897638fee2e05694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFever: 0
 --- !u!33 &9209098452697188075
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -301,7 +303,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Segment (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8243022097466633671, guid: 3cb63b54af3210c45b7018f16f94c0d5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb63b54af3210c45b7018f16f94c0d5, type: 3}
 --- !u!4 &8352968924251657728 stripped
 Transform:
@@ -374,7 +377,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Segment (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8243022097466633671, guid: 3cb63b54af3210c45b7018f16f94c0d5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb63b54af3210c45b7018f16f94c0d5, type: 3}
 --- !u!4 &8162449290707889058 stripped
 Transform:
@@ -447,7 +451,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Segment
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8243022097466633671, guid: 3cb63b54af3210c45b7018f16f94c0d5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb63b54af3210c45b7018f16f94c0d5, type: 3}
 --- !u!4 &9209098452499922843 stripped
 Transform:
@@ -520,7 +525,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Segment (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8243022097466633671, guid: 3cb63b54af3210c45b7018f16f94c0d5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb63b54af3210c45b7018f16f94c0d5, type: 3}
 --- !u!4 &7745135114930846236 stripped
 Transform:
