@@ -7,7 +7,6 @@ using UnityEngine;
 public class Segment : MonoBehaviour
 {
     [SerializeField] [Range(0, 100)] private float startSpeed = 8;
-    [SerializeField] private int pointsLimit = 2;
     private Vector3 point;
     private float speed;
     private Vector3 startPosition;

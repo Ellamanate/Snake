@@ -9,7 +9,6 @@ public class SnakeMove : MonoBehaviour
 {
     [SerializeField] [Range(1, 10)] private float speed = 5;
     [SerializeField] [Range(1, 10)] private float feverSpeedUp = 3;
-    [SerializeField] [Range(0.01f, 1)] private float trackDelay = 0.01f;
     [SerializeField] private Vector2 RatioXZ = new Vector2(3, 1);
     private CharacterController body;
     private Snake snake;
